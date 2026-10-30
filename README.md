@@ -27,6 +27,8 @@ Prueba: Alteración del ciclo de entrenamiento original (1200 épocas, LR = 0.1)
 
 Tasa de aprendizaje alta (LR = 1.0): El entrenamiento se volvió inestable. La pérdida osciló salvajemente y la precisión final fue deficiente debido a que los saltos en el descenso del gradiente eran demasiado grandes (sobrepasando el mínimo local).
 
+Tasa de aprendizaje baja (LR = 0.001): El entrenamiento se estancó. Después de 1200 épocas, la pérdida seguía alta. Requeriría decenas de miles de épocas extra para converger.
+
 
 
 

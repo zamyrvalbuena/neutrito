@@ -71,7 +71,7 @@ for epoch in range(1200):
     W1 -= 0.1 * grad_W1
     b1 -= 0.1 * grad_b1
     W2 -= 0.1 * grad_W2
-    b2 -= 1 * grad_b2
+    b2 -= 0.001 * grad_b2
     if epoch % 200 == 0:
         print(f"{labels['epoch']} {epoch} | {labels['loss']}: {loss:.4f}")
 
