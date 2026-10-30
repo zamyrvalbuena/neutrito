@@ -29,6 +29,6 @@ Tasa de aprendizaje alta (LR = 1.0): El entrenamiento se volvió inestable. La p
 
 Tasa de aprendizaje baja (LR = 0.001): El entrenamiento se estancó. Después de 1200 épocas, la pérdida seguía alta. Requeriría decenas de miles de épocas extra para converger.
 
-
+Más épocas (ej. 5000 con LR 0.1): El entrenamiento mejora marginalmente al principio, pero luego la mejora se aplana.
 
 
