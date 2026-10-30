@@ -12,4 +12,15 @@ Prueba: Se mantuvieron fijas el hambre y el aburrimiento en 0.2 (bajas), mientra
 
 Prueba: Se configuraron las entradas con nescesidades criticas idénticas, por ejemplo: Hambre = 85, aburrimiento = 0.8, Energía = 0.15 (cansacio = 0.85). Resultado: Las salidas de la función Softmax mostraron una incertidumbre. Las probabilidades de Comer y Dormir oscilaron cerca del 45% cada una, mientras que Jugar obtuvo un 10%. La función Softmax resalta la competitividad de las clases: en lugar de un salto binario absoluto, refleja matemáticamente el empate probabilistico entre las dos necesidads más urgentes.
 
+### Modificación de la arquitectura (Capa oculta)
+
+Prueba: Se ajustó el tamaño de la capa oculta (w1, b1, w2), probando con 3, 10 y 20 neuronas (originalmente 6).
+
+#### 3 Neuronas:
+ la perdida se estancó en valores más altos (0.3) y la precisión bajó al 85%. La red sufre de subajuste(underfitting); le faltan párametros para trazar fronteras de desición complejas.
+
+#### 10 y 20 Neuronas:
+La pérdida convergió mucho más rapido y a un valor más cercano a 0, logrando una presición casi perfecta de (>98%). Mayor cantidad de neuronas otorga mayor capacidad de representación para la función objetivo.
+
+
 

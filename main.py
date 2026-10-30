@@ -33,9 +33,9 @@ actions = ("eat", "sleep", "play")
 np.random.seed(42)
 X = np.random.rand(3000, 3)
 targets = np.argmax(np.column_stack((X[:, 0], 1 - X[:, 1], X[:, 2])), axis=1)
-W1 = np.random.randn(3, 6) * 0.5
-b1 = np.zeros((1, 6))
-W2 = np.random.randn(6, 3) * 0.5
+W1 = np.random.randn(3, 3) * 0.5
+b1 = np.zeros((1, 10))
+W2 = np.random.randn(6, 20) * 0.5
 b2 = np.zeros((1, 3))
 
 
