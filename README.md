@@ -22,5 +22,11 @@ Prueba: Se ajustó el tamaño de la capa oculta (w1, b1, w2), probando con 3, 10
 #### 10 y 20 Neuronas:
 La pérdida convergió mucho más rapido y a un valor más cercano a 0, logrando una presición casi perfecta de (>98%). Mayor cantidad de neuronas otorga mayor capacidad de representación para la función objetivo.
 
+### Ajuste de Hiperparámetros (Épocas y Tasa de Aprendizaje)
+Prueba: Alteración del ciclo de entrenamiento original (1200 épocas, LR = 0.1).
+
+Tasa de aprendizaje alta (LR = 1.0): El entrenamiento se volvió inestable. La pérdida osciló salvajemente y la precisión final fue deficiente debido a que los saltos en el descenso del gradiente eran demasiado grandes (sobrepasando el mínimo local).
+
+
 
 
