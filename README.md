@@ -43,7 +43,7 @@ np.column_stack((Hambre, 1 - Energía, Aburrimiento, Suciedad)).
 #### 3. Arquitectura:
 La matriz de pesos de salida W2 pasaría de ser (6, 3) a (6, 4) y el sesgo b2 sería de tamaño (1, 4).
 
-### 🧠 2. Análisis Conceptual
+### 2. Análisis Conceptual
 #### 1. ¿En qué se diferencian pesos y sesgos?
 Pesos (Weights): Multiplican el valor de entrada. Determinan la "importancia" o fuerza de la conexión entre una entrada y la siguiente neurona.
 
