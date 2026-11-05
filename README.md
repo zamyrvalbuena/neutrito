@@ -31,4 +31,15 @@ Tasa de aprendizaje baja (LR = 0.001): El entrenamiento se estancó. Después de
 
 Más épocas (ej. 5000 con LR 0.1): El entrenamiento mejora marginalmente al principio, pero luego la mejora se aplana.
 
+### Adición de una Cuarta Acción
 
+#### 1. Datos de entrada (X):
+Se requeriría una cuarta variable, por ejemplo, "Suciedad" (valores de 0 a 1). La matriz X pasa de (3000, 3) a (3000, 4).
+
+#### 2. Etiquetas (Targets):
+La regla de generación debería evaluar 4 columnas:
+np.column_stack((Hambre, 1 - Energía, Aburrimiento, Suciedad)).
+
+#### 3. Arquitectura:
+La matriz de pesos de salida W2 pasaría de ser (6, 3) a (6, 4) y el sesgo b2 sería de tamaño (1, 4).
+ 

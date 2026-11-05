@@ -7,8 +7,8 @@ LANGUAGE = "es"  # Change to "es" for Spanish interface text.
 TEXT = {
     "en": {
         "title": "NEURITO - MY ARTIFICIAL BRAIN",
-        "hunger": "Hunger", "energy": "Energy", "boredom": "Boredom",
-        "eat": "EAT", "sleep": "SLEEP", "play": "PLAY", "neutral": "CALM",
+        "hunger": "Hunger", "energy": "Energy", "boredom": "Boredom", "dirtiness": "Dirtiness",
+        "eat": "EAT", "sleep": "SLEEP", "play": "PLAY", "clean": "CLEAN", "neutral": "CALM",
         "accuracy": "Test accuracy against synthetic policy",
         "epoch": "Epoch", "loss": "Loss",
         "controls1": "H/J: hunger +/-    E/D: energy +/-",
@@ -17,8 +17,8 @@ TEXT = {
     },
     "es": {
         "title": "NEURITO - MI CEREBRO ARTIFICIAL",
-        "hunger": "Hambre", "energy": "Energía", "boredom": "Aburrimiento",
-        "eat": "COMER", "sleep": "DORMIR", "play": "JUGAR", "neutral": "NEUTRAL",
+        "hunger": "Hambre", "energy": "Energía", "boredom": "Aburrimiento", "dirtiness": "Suciedad",
+        "eat": "COMER", "sleep": "DORMIR", "play": "JUGAR", "clean": "LIMPIAR", "neutral": "NEUTRAL",
         "accuracy": "Precisión frente a la política sintética",
         "epoch": "Época", "loss": "Pérdida",
         "controls1": "H/J: hambre +/-    E/D: energía +/-",
@@ -27,16 +27,16 @@ TEXT = {
     },
 }
 labels = TEXT[LANGUAGE]
-actions = ("eat", "sleep", "play")
+actions = ("eat", "sleep", "play", "clean")
 
 # Synthetic examples follow a simple priority policy.
 np.random.seed(42)
-X = np.random.rand(3000, 3)
-targets = np.argmax(np.column_stack((X[:, 0], 1 - X[:, 1], X[:, 2])), axis=1)
-W1 = np.random.randn(3, 10) * 0.5
+X = np.random.rand(3000, 4)
+targets = np.argmax(np.column_stack((X[:, 0], 1 - X[:, 1], X[:, 2], X[:, 3])), axis=1)
+W1 = np.random.randn(4, 10) * 0.5
 b1 = np.zeros((1, 10))
-W2 = np.random.randn(10, 3) * 0.5
-b2 = np.zeros((1, 3))
+W2 = np.random.randn(10, 4) * 0.5
+b2 = np.zeros((1, 4))
 
 
 def relu(values):
@@ -75,9 +75,9 @@ for epoch in range(3000):
     if epoch % 200 == 0:
         print(f"{labels['epoch']} {epoch} | {labels['loss']}: {loss:.4f}")
 
-test = np.random.rand(1000, 3)
+test = np.random.rand(1000, 4)
 test_targets = np.argmax(
-    np.column_stack((test[:, 0], 1 - test[:, 1], test[:, 2])), axis=1
+    np.column_stack((test[:, 0], 1 - test[:, 1], test[:, 2], test[:, 3])), axis=1
 )
 accuracy = np.mean(np.argmax(predict(test), axis=1) == test_targets)
 print(f"{labels['accuracy']}: {accuracy:.2%}")
@@ -106,8 +106,9 @@ frames = {
     "eat": load_frames(["comer_1.png", "comer_2.png"]),
     "sleep": load_frames(["dormir_1.png", "dormir_2.png"]),
     "play": load_frames(["jugar_1.png", "jugar_2.png"]),
+    "clean": load_frames(["neutral_1.png"]),
 }
-needs = [0.2, 0.9, 0.2]
+needs = [0.2, 0.9, 0.2, 0.0]
 current_state = "neutral"
 frame_index = 0
 last_frame_time = pygame.time.get_ticks()
@@ -132,10 +133,14 @@ while running:
                 needs[2] = min(1, needs[2] + 0.1)
             elif event.key == pygame.K_s:
                 needs[2] = max(0, needs[2] - 0.1)
+            elif event.key == pygame.K_c:
+                needs[3] = min(1, needs[3] + 0.1)
+            elif event.key == pygame.K_x:
+                needs[3] = max(0, needs[3] - 0.1)
             elif event.key == pygame.K_r:
-                needs = list(np.random.rand(3))
+                needs = list(np.random.rand(4))
             elif event.key == pygame.K_n:
-                needs = [0.2, 0.9, 0.2]
+                needs = [0.2, 0.9, 0.2, 0.0]
 
     probabilities = predict(np.array([needs]))[0]
     action = actions[int(np.argmax(probabilities))]
@@ -155,10 +160,10 @@ while running:
     title = font.render(labels["title"], True, (55, 45, 75))
     screen.blit(title, (45, 28))
 
-    colors = [(235, 125, 75), (70, 175, 115), (105, 125, 225)]
-    for index, key in enumerate(("hunger", "energy", "boredom")):
+    colors = [(235, 125, 75), (70, 175, 115), (105, 125, 225), (200, 180, 50)]
+    for index, key in enumerate(("hunger", "energy", "boredom", "dirtiness")):
         value = needs[index]
-        y = 125 + index * 95
+        y = 110 + index * 70
         text = small_font.render(
             f"{labels[key]}: {value * 100:.0f}%", True, (35, 40, 55)
         )
