@@ -42,4 +42,20 @@ np.column_stack((Hambre, 1 - Energía, Aburrimiento, Suciedad)).
 
 #### 3. Arquitectura:
 La matriz de pesos de salida W2 pasaría de ser (6, 3) a (6, 4) y el sesgo b2 sería de tamaño (1, 4).
- 
+
+### 🧠 2. Análisis Conceptual
+#### 1. ¿En qué se diferencian pesos y sesgos?
+Pesos (Weights): Multiplican el valor de entrada. Determinan la "importancia" o fuerza de la conexión entre una entrada y la siguiente neurona.
+
+Sesgos (Biases): Son valores constantes que se suman al resultado de la multiplicación. Permiten desplazar la función de activación, haciendo posible que una neurona se active (o se inhiba) incluso si todos los valores de entrada son cero.
+
+#### 2. ¿Por qué el cansancio es 1 - energía?
+La política del modelo evalúa qué necesidad tiene el valor más alto numéricamente usando np.argmax. El hambre y el aburrimiento ya se miden en términos de "necesidad" (valores cercanos a 1 significan urgencia). La energía, por el contrario, es un recurso; un valor de 1 significa estar descansado. Restar 1 - energía transforma la métrica del recurso (energía) en una métrica de necesidad (cansancio), alineándola en la misma escala lógica que las demás para que argmax tome la decisión correcta.
+
+#### 3. ¿Qué hace ReLU y qué hace Softmax?
+ReLU (Rectified Linear Unit): Se aplica en la capa oculta. Es una función no lineal que devuelve 0 si el valor es negativo, y deja pasar el valor intacto si es positivo. Permite que la red aprenda relaciones complejas y no lineales sin colapsar en una simple regresión lineal.
+
+Softmax: Se aplica en la capa de salida. Toma los puntajes brutos (logits) y los transforma en una distribución de probabilidades donde todos los valores suman exactamente 1.0 (o 100%). Esto es ideal para clasificación multiclase porque exagera las diferencias, haciendo que la opción ganadora destaque.
+
+#### 4. ¿Por qué una precisión alta puede ser engañosa?
+Una precisión cercana al 100% puede indicar sobreajuste (overfitting), donde la red simplemente "memoriza" los datos de entrenamiento pero es incapaz de generalizar ante datos nuevos no vistos. Además, si el conjunto de datos sintéticos estuviera desbalanceado (ej. 90% de los casos dictan "COMER"), un modelo que siempre prediga "COMER" obtendría un 90% de precisión sin haber aprendido absolutamente nada de la lógica real.
