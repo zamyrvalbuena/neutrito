@@ -68,10 +68,10 @@ for epoch in range(500):
     delta1 = (delta2 @ W2.T) * (z1 > 0)
     grad_W1 = X.T @ delta1
     grad_b1 = np.sum(delta1, axis=0, keepdims=True)
-    W1 -= 0.001 * grad_W1
-    b1 -= 0.001 * grad_b1
-    W2 -= 0.001 * grad_W2
-    b2 -= 0.001 * grad_b2
+    W1 -= 1 * grad_W1
+    b1 -= 1 * grad_b1
+    W2 -= 1 * grad_W2
+    b2 -= 1 * grad_b2
     if epoch % 200 == 0:
         print(f"{labels['epoch']} {epoch} | {labels['loss']}: {loss:.4f}")
 
