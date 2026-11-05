@@ -33,9 +33,9 @@ actions = ("eat", "sleep", "play")
 np.random.seed(42)
 X = np.random.rand(3000, 3)
 targets = np.argmax(np.column_stack((X[:, 0], 1 - X[:, 1], X[:, 2])), axis=1)
-W1 = np.random.randn(3, 3) * 0.5
+W1 = np.random.randn(3, 10) * 0.5
 b1 = np.zeros((1, 10))
-W2 = np.random.randn(6, 20) * 0.5
+W2 = np.random.randn(10, 3) * 0.5
 b2 = np.zeros((1, 3))
 
 
@@ -54,7 +54,7 @@ def predict(data):
 
 
 # Full-batch gradient descent.
-for epoch in range(5000):
+for epoch in range(1200):
     z1 = X @ W1 + b1
     hidden = relu(z1)
     probabilities = softmax(hidden @ W2 + b2)
