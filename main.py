@@ -54,7 +54,7 @@ def predict(data):
 
 
 # Full-batch gradient descent.
-for epoch in range(1200):
+for epoch in range(500):
     z1 = X @ W1 + b1
     hidden = relu(z1)
     probabilities = softmax(hidden @ W2 + b2)
@@ -68,10 +68,10 @@ for epoch in range(1200):
     delta1 = (delta2 @ W2.T) * (z1 > 0)
     grad_W1 = X.T @ delta1
     grad_b1 = np.sum(delta1, axis=0, keepdims=True)
-    W1 -= 0.1 * grad_W1
-    b1 -= 0.1 * grad_b1
-    W2 -= 0.1 * grad_W2
-    b2 -= 0.1 * grad_b2
+    W1 -= 0.001 * grad_W1
+    b1 -= 0.001 * grad_b1
+    W2 -= 0.001 * grad_W2
+    b2 -= 0.001 * grad_b2
     if epoch % 200 == 0:
         print(f"{labels['epoch']} {epoch} | {labels['loss']}: {loss:.4f}")
 
