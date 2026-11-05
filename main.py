@@ -54,7 +54,7 @@ def predict(data):
 
 
 # Full-batch gradient descent.
-for epoch in range(500):
+for epoch in range(3000):
     z1 = X @ W1 + b1
     hidden = relu(z1)
     probabilities = softmax(hidden @ W2 + b2)
