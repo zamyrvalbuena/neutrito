@@ -70,3 +70,7 @@ No se necesitan dependencias nuevas: se reutilizan NumPy y Pygame.
 
 ## 1. Juego sin entrenar
 Al inicial el simulador sin entrenamiento, los pesos de la red son aleatorios y la probabilidad de salto es errática. El personaje choca constantemente contra los obstáculos porque no reconoce la relación entre distancia, la velocidad y la necesidad de saltar.
+
+## 2. Entrenamiento gradual (Cien épocas)
+Entrenar en bloques de 100 épocasa revela una mejora progresiva. La pérdida (entropía cruzada binaria) disminuye drasticamente en las primeras 300 épocas. La presición sube por encima del 90%, y visualmente Neurito comienza a saltar justo cuando el obstaculo entra en la "ventana de salto" (entre 7 y 13 fotogramas de tiempo estimado).
+
