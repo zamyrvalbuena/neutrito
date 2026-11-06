@@ -78,4 +78,7 @@ Entrenar en bloques de 100 épocasa revela una mejora progresiva. La pérdida (e
 La red original utiliza una arquitectura 3->12->1.
 
 ### Con 3 neuronas:
-La red sufre sub ajuste (underfitting). Le cuesta converger y la precisión se estanca en valores bajos, provocando colisiones frecuentes.
+La red sufre sub ajuste (underfitting). Le cuesta converger y la precisión se estanca en valores bajos, provocando colisiones frecuentes especialmente en el cambio de velocidad del obstaculo.
+
+### Con 24 neuronas: 
+La perdida baja más rapido en las primeras épocas debido a la mayor capacidad de representación, pero el costo computacional aumenta. La presición de prueba es marginalmente mejor, auntq puede ser mas susceptible al sobreajuste.
