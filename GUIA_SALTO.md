@@ -74,3 +74,8 @@ Al inicial el simulador sin entrenamiento, los pesos de la red son aleatorios y 
 ## 2. Entrenamiento gradual (Cien épocas)
 Entrenar en bloques de 100 épocasa revela una mejora progresiva. La pérdida (entropía cruzada binaria) disminuye drasticamente en las primeras 300 épocas. La presición sube por encima del 90%, y visualmente Neurito comienza a saltar justo cuando el obstaculo entra en la "ventana de salto" (entre 7 y 13 fotogramas de tiempo estimado).
 
+## 3. modificacion de la capa oculta (ocultas=12 a 3 o 24) 
+La red original utiliza una arquitectura 3->12->1.
+
+### Con 3 neuronas:
+La red sufre sub ajuste (underfitting). Le cuesta converger y la precisión se estanca en valores bajos, provocando colisiones frecuentes.

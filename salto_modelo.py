@@ -3,7 +3,7 @@ import numpy as np
 
 
 class RedSalto:
-    def __init__(self, semilla=42, ocultas=12, tasa=0.8):
+    def __init__(self, semilla=42, ocultas=3, tasa=0.8):
         self.rng = np.random.default_rng(semilla)
         self.ocultas = ocultas
         self.tasa = tasa
