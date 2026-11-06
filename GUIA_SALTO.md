@@ -82,3 +82,9 @@ La red sufre sub ajuste (underfitting). Le cuesta converger y la precisión se e
 
 ### Con 24 neuronas: 
 La perdida baja más rapido en las primeras épocas debido a la mayor capacidad de representación, pero el costo computacional aumenta. La presición de prueba es marginalmente mejor, auntq puede ser mas susceptible al sobreajuste.
+
+## Cambio en la tasa de parendizaje (0.8 a 0.01 o 1.2)
+El modelo aplica descenso de gradiente multiplicando el gradiente por la tasa de aprendisaje.
+
+### Tasa 0.01:
+el descenso de gradiente es demasiado pequeño. se requieren miles de épocas adicionales para ver una reducción significativa en la pérdida, haciendo el entrenamiento ineficiente.
