@@ -88,3 +88,6 @@ El modelo aplica descenso de gradiente multiplicando el gradiente por la tasa de
 
 ### Tasa 0.01:
 el descenso de gradiente es demasiado pequeño. se requieren miles de épocas adicionales para ver una reducción significativa en la pérdida, haciendo el entrenamiento ineficiente.
+
+### Tasa 1.2:
+El tamaño del paso es excesivo. La pérdida oscila bruscamente y la red no logra estabilizarse en un mínimo, arruinando la precisión y provocando saltos erráticos
