@@ -65,3 +65,8 @@ No se necesitan dependencias nuevas: se reutilizan NumPy y Pygame.
 5. Cambia la ventana de entrenamiento en `etiqueta()` y en la generación de positivos. Comprueba si la política resultante es compatible con la física.
 
 **Pregunta central:** ¿por qué una red puede clasificar ejemplos con buena precisión y aun así chocar?
+
+# Experimentos: Neurito 2.0(salto)
+
+## 1. Juego sin entrenar
+Al inicial el simulador sin entrenamiento, los pesos de la red son aleatorios y la probabilidad de salto es errática. El personaje choca constantemente contra los obstáculos porque no reconoce la relación entre distancia, la velocidad y la necesidad de saltar.
