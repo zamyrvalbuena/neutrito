@@ -74,7 +74,7 @@ Al inicial el simulador sin entrenamiento, los pesos de la red son aleatorios y 
 ## 2. Entrenamiento gradual (Cien épocas)
 Entrenar en bloques de 100 épocasa revela una mejora progresiva. La pérdida (entropía cruzada binaria) disminuye drasticamente en las primeras 300 épocas. La presición sube por encima del 90%, y visualmente Neurito comienza a saltar justo cuando el obstaculo entra en la "ventana de salto" (entre 7 y 13 fotogramas de tiempo estimado).
 
-## 3. modificacion de la capa oculta (ocultas=12 a 3 o 24) 
+## 3. Modificacion de la capa oculta (ocultas=12 a 3 o 24) 
 La red original utiliza una arquitectura 3->12->1.
 
 ### Con 3 neuronas:
@@ -83,7 +83,7 @@ La red sufre sub ajuste (underfitting). Le cuesta converger y la precisión se e
 ### Con 24 neuronas: 
 La perdida baja más rapido en las primeras épocas debido a la mayor capacidad de representación, pero el costo computacional aumenta. La presición de prueba es marginalmente mejor, auntq puede ser mas susceptible al sobreajuste.
 
-## Cambio en la tasa de parendizaje (0.8 a 0.01 o 1.2)
+## 4. Cambio en la tasa de parendizaje (0.8 a 0.01 o 1.2)
 El modelo aplica descenso de gradiente multiplicando el gradiente por la tasa de aprendisaje.
 
 ### Tasa 0.01:
@@ -91,3 +91,6 @@ el descenso de gradiente es demasiado pequeño. se requieren miles de épocas ad
 
 ### Tasa 1.2:
 El tamaño del paso es excesivo. La pérdida oscila bruscamente y la red no logra estabilizarse en un mínimo, arruinando la precisión y provocando saltos erráticos
+
+## 5. Cambio de ventana de entrenamiento (etiqueta())
+La función entiqueta() asigna como objetivo salta si el tiempo estimado al obstáculo está entre 7 y 13 fotogramas. Si se cammbia esta ventana a entre 2 y 5 fotogramas por ejemplo la red aprende a saltar mucho más tarde. Como resultado, Neurito salta correctamente según la nueva regla, pero la física del salto (gravedad de 0.65 e impulso de -12.0) no le permite elevarse lo suficiente a tiempo, provocando coaliciones.

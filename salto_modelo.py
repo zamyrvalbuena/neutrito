@@ -48,14 +48,14 @@ class RedSalto:
     def etiqueta(distancia, velocidad):
         """Regla que define las etiquetas supervisadas, no una recompensa."""
         ttc = np.asarray(distancia) / np.maximum(np.asarray(velocidad), 0.001)
-        return ((ttc >= 7) & (ttc <= 13)).astype(float).reshape(-1, 1)
+        return ((ttc >= 2) & (ttc <= 5)).astype(float).reshape(-1, 1)
 
     def generar_datos(self, n=5000):
         v = self.rng.uniform(4.5, 8.5, n)
         # Mezcla de ejemplos de saltar y esperar para evitar el desbalance.
         n_pos = n // 2
         ttc = np.concatenate((
-            self.rng.uniform(7.5, 12.5, n_pos),
+            self.rng.uniform(2.5, 4.5, n_pos),
             self.rng.uniform(0, 60, n - n_pos),
         ))
         self.rng.shuffle(ttc)
