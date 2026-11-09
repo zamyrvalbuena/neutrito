@@ -74,3 +74,6 @@ El modelo no interpreta capturas de pantalla: trabaja con características estru
 
 ## 1. Comportamiento sin entrenar
 al iniciar sin entrenamiento, las salidas de la red (softmax) poducen decisiones aleatorias. Neurito se atastca chocando contra paredes o caminando en bucles porque sus pesos inicializados no identifican ninguna relacipon entre su posición y la meta.
+
+## 2. Evolucion del entrenamiento (100 a 400)
+Al presionar 2 repetidamente, la perdida entropía cruzada multiclase disminuye significativamente. A las 400 épocas, la exactitud en el conjunto de prueba supera el 90% y Nurito es capaz de navegar casi directa hacia la comida.
