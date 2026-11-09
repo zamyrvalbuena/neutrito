@@ -39,7 +39,7 @@ def generar_datos(semilla=42, fraccion_prueba=0.2):
 
 
 class RedLaberinto:
-    def __init__(self, semilla=42, ocultas=96, tasa=0.45):
+    def __init__(self, semilla=42, ocultas=16, tasa=0.45):
         self.rng = np.random.default_rng(semilla)
         self.ocultas = ocultas
         self.tasa = tasa

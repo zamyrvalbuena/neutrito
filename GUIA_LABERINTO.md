@@ -87,3 +87,15 @@ Depende exclusivamente de las probabilidades de salidad de la red. En ocasiones 
 ### Asistitdo:
 
 agregar reglas programadas que descartan movimientos inválidos contra las paredes y penalizan posiciones previamente visitadas mediante la resta de 0.35 a la probabilidad de celdas ya recorridas. Esto garantiza una navegación exitosa incluso si la red comente errores, confirmando que esta inteligencia extra no fue aprendida por el modelo.
+
+## 4. Arquitectura de capa oculta
+La red original de 165 entradas y 4 salidas utiliza 96 neuronas ocultas.
+
+### Con 16 neuronas:
+Sufre de subajuste; la red no tiene suficiente capacidad de representación para codificar todas las conbinaciones posición-meta.
+
+### 128 neuronas:
+La convergencia inicial es más rápida, pero incrementa el riesgo de memorizar los datos de entrenamiento (sobreajuste), lo que puede reducir el éxito en los casos de prueba no vistos.
+
+## 5. Generalización a rutas no entrenadas
+Aun que el modelo conoce la geometría de los 3 mapas entrenados (al estar codificados en un vector one-hot), el 20% de los pares de origen -meta se reservó exolusivamente para las pruebas. El hecho de que Neurito llegue a la meta demuestra que la red aprendió a generalizar el concepto de "acercarse al objetivo" dentro de este nuevo universo, en lugar de memorizar rutas estáticas.

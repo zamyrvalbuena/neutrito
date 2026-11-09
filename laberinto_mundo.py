@@ -1,5 +1,5 @@
 """Mapas, búsqueda BFS experta y simulación independiente de Pygame."""
-from collections import deque
+from collections import heapq
 from dataclasses import dataclass
 import random
 
@@ -60,9 +60,9 @@ def valido(mapa, pos):
 def distancias_bfs(mapa, meta):
     """Distancia real por celdas hasta la comida, calculada SOLO por el profesor BFS."""
     dist = {meta: 0}
-    cola = deque([meta])
+    cola = heapq([meta])
     while cola:
-        actual = cola.popleft()
+        actual = cola.pop()
         for a in range(4):
             siguiente = vecino(actual, a)
             if valido(mapa, siguiente) and siguiente not in dist:
