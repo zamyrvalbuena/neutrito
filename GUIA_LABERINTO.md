@@ -77,3 +77,13 @@ al iniciar sin entrenamiento, las salidas de la red (softmax) poducen decisiones
 
 ## 2. Evolucion del entrenamiento (100 a 400)
 Al presionar 2 repetidamente, la perdida entropía cruzada multiclase disminuye significativamente. A las 400 épocas, la exactitud en el conjunto de prueba supera el 90% y Nurito es capaz de navegar casi directa hacia la comida.
+
+## 3. Red pura vs. Navegación Asistencia
+
+### Red Pura (argmax puro):
+
+Depende exclusivamente de las probabilidades de salidad de la red. En ocasiones falla al predecir movimientos contra paredes o queda atrapado en ciclos si la exactitud no es perfecta.
+
+### Asistitdo:
+
+agregar reglas programadas que descartan movimientos inválidos contra las paredes y penalizan posiciones previamente visitadas mediante la resta de 0.35 a la probabilidad de celdas ya recorridas. Esto garantiza una navegación exitosa incluso si la red comente errores, confirmando que esta inteligencia extra no fue aprendida por el modelo.
